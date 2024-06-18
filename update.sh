@@ -3,6 +3,7 @@
 # minimal dotfile manager
 # tracks files / copies them into the repo, sorted by hostname
 #
+# note: assumes pwd is this repo before running this script
 set -u
 
 # array of files [relative to home] to include
