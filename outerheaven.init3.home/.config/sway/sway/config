@@ -1,0 +1,36 @@
+# Config for sway
+#
+# See `man 5 sway` for a complete reference.
+font pango:SFProDisplay Regular 12
+smart_borders on
+default_border pixel 1
+default_floating_border pixel 1
+# gaps
+#smart_gaps on
+#gaps inner 1
+# default_floating_border normal
+# default_floating_border none
+hide_edge_borders --i3 smart
+tiling_drag disable
+floating_modifier none
+workspace_layout tabbed
+titlebar_border_thickness 1
+titlebar_padding 4 2
+title_align center
+workspace_auto_back_and_forth yes
+# cursor stuff - default size is 24
+#seat seat0 xcursor_theme Bibata-Modern-Classic 32
+#seat seat0 xcursor_theme Bibata-Modern-Ice 24
+#seat seat0 xcursor_theme capitaine-cursors-light 24
+
+# map human friendly names for displays to outputs, may be used by included configs
+set $MON_LEFT DP-2
+set $MON_CENTER DP-1
+set $MON_RIGHT DP-3
+
+# include distribution + user things
+include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/*.conf")'
+
+# run script which handles conditional/timely autostarts. uses dict w/ this structure:
+# {'autostarts': { 'pre': [], 'weekend': [], 'common': [], 'work': []}}
+exec 'python3 ~/.config/sway/scripts/startup.py'

@@ -1,0 +1,48 @@
+#!/bin/sh
+# vim: set ft=sh:
+# shellcheck disable=SC2034
+# 
+# Set environment variables for Sway session
+#
+# Useful variables for wlroots:
+# https://gitlab.freedesktop.org/wlroots/wlroots/-/blob/master/docs/env_vars.md
+#
+#WLR_NO_HARDWARE_CURSORS=1
+PATH="${HOME}/.cargo/bin:${HOME}/.local/bin:${PATH}"
+#SWAY_EXTRA_ARGS="$SWAY_EXTRA_ARGS --debug"  ## Pass extra arguments to the /usr/bin/sway executable
+GTK2_RC_FILES="${HOME}/.gtkrc-2.0"
+QT_STYLE_OVERRIDE=kvantum  # use kvantum to try to mirror gtk w/ QT
+# XDG_CURRENT_DESKTOP=sway
+XDG_DATA_DIRS="${HOME}/.local/share/:${XDG_DATA_DIRS}"
+EDITOR=/usr/bin/nvim  # change default CLI editor to 'nvim'; Fedora defaults to nano
+GNUPGHOME=${HOME}/.gnupg/trezor  # use Trezor hardware wallet for GPG signing
+# ref: https://github.com/romanz/trezor-agent/blob/master/doc/README-GPG.md
+LIBVIRT_DEFAULT_URI="qemu:///system"  # default to the system context with qemu/libvirt
+SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/keyring/ssh  # use the SSH keyring spawned by the DE (if Sway, ~/.config/sway/startup.py)
+ANSIBLE_NOCOWS=1  # disable ansible cowsay tomfoolery, I control my ranch [poorly]
+MOZ_CRASHREPORTER_DISABLE=1  # disable crash reports for mozilla things -- they eat space while submission is disabled
+MOZ_ENABLE_WAYLAND=1
+# GDK_BACKEND=wayland  # superfluous?
+KITTY_ENABLE_WAYLAND=1
+QT_QPA_PLATFORM=wayland  # encourage wayland for QT/KDE apps
+PROTON_LOG_DIR=$(mktemp --tmpdir -d proton_logs.XXXX)
+SYSTEMD_PAGER=''  # disable the auto pager
+_JAVA_AWT_WM_NONREPARENTING=1
+NO_AT_BRIDGE=1
+BEMENU_BACKEND=wayland
+VAAPI_MPEG4_ENABLED=true
+# increase on-disk cache from 1G to 4, NOTE: may further multiply across architectures (32/64)
+# MESA_SHADER_CACHE_MAX_SIZE=4G
+
+# electron vars - wanted features, common args, or wayland specific args (for Sway)
+# *not* used by Electron applications directly, used elsewhere in session (ie: autostarts)
+W_ELECTRON_FEATURES="VaapiVideoDecoder,VaapiVideoEncoder,WebRTCPipeWireCapturer,UseOzonePlatform,WaylandWindowDecorations,VaapiVideoDecodeLinuxGL"
+# egl causes at least mattermost (potentially other things) to have 'GPU' crashes - while others are fine (ie: Discord)
+#W_ELECTRON_ARGS="--silent --enable-gpu --use-gl=egl --enable-features='${W_ELECTRON_FEATURES}' --ozone-platform-hint=auto"
+W_ELECTRON_ARGS="--silent --enable-gpu-rasterization --enable-sync --disable-features='AudioServiceSandbox,Vulkan' --enable-features='${W_ELECTRON_FEATURES}' --ozone-platform-hint=auto"
+
+# maximum 'eFfIciEncY', avoid a ton of syscalls - set TZ to use localtime for glibc benefit, ref:
+#   https://blog.packagecloud.io/set-environment-variable-save-thousands-of-system-calls/
+# flatpak things get weird with this, commenting out
+#TZ=:/etc/localtime
+# untested theory, may improve: TZ=:../usr/share/zoneinfo/America/Chicago
