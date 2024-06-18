@@ -1,0 +1,19 @@
+{
+  "languageserver": {
+    "systemd-language-server": {
+      "command": "systemd-language-server",
+      "filetypes": ["systemd"]
+    }
+  },
+  "jedi.enable": true,
+  "jedi.startupMessage": true,
+  "jedi.jediSettings.debug": false,
+  "jedi.diagnostics.enable": false,
+  "jedi.workspace.symbols.ignoreFolders": [
+    ".nox",
+    ".tox",
+    ".venv",
+    "__pycache__",
+    "venv"
+  ]
+}
