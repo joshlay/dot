@@ -1,4 +1,5 @@
-" NOTE: don't add more LSPs here, use coc - it offers better completion
+" NOTE: don't add more LSPs here, use 'coc.nvim' - it offers better completion
+" 'vim'/common elements are held here while 'nvim' has another config: '.config/nvim/init.vim'
 call plug#begin('~/.vim/exts')
 Plug 'AlexvZyl/nordic.nvim', { 'branch': 'main' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}

@@ -1,8 +1,6 @@
 set mouse=
-" use spaces instead of \t
-set expandtab
-" match indentation of previous line
-set autoindent
+set expandtab  " use spaces instead of \t
+set autoindent  " match indentation of previous line
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
