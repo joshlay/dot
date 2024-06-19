@@ -11,8 +11,23 @@ _I use Fedora btw :)_
 
 Time/date aware autostart manager. The script: [.config/sway/scripts/startup.py](./outerheaven.init3.home/.config/sway/scripts/startup.py)
 
-This reads [.config/autostart-i3ipc.yml](./outerheaven.init3.home/.config/autostart-i3ipc.yml)
-to know what programs to `exec`. Example:
+This is run by Sway on-login:
+
+```bash
+~ $ cat ~/.config/sway/config
+# Config for sway
+#
+# See `man 5 sway` for a complete reference.
+# [...]
+# run script which handles conditional/timely autostarts. uses dict w/ this structure:
+# {'autostarts': { 'pre': [], 'weekend': [], 'common': [], 'work': []}}
+exec 'python3 ~/.config/sway/scripts/startup.py'
+```
+
+This reads [autostart-i3ipc.yml](./outerheaven.init3.home/.config/autostart-i3ipc.yml)
+_(in `~/.config`)_ to know what programs to `exec`.
+
+Example with in-line comments:
 
 ```yaml
 ---
@@ -22,7 +37,8 @@ autostarts:
   common: []  # things started every day, after 'pre' - non-blocking
   work: []    # does not execute on weekends; only if within working day/hours
 ```
-Touch `~/.vacation` to skip `work` autostarts; remove the file when work may begin again :)
+
+Touch `~/.vacation` to skip `work` autostarts; `rm` when work may continue :)
 
 Working days are assumed Monday through Friday. Hours are between 8 AM and 4 PM.
 These parameters may be changed in the `WorkTime` class.
