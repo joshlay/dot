@@ -7,15 +7,17 @@
 set -u
 
 # array of files/dirs [relative to home] to include
+# NOTE: use a trailing slash to avoid directory nesting
 DOTS=(
         '.bashrc'
         # '.shell_aliases'  # needs cleaned up first
         '.vimrc'
-        '.config/fuzzel'
+        '.config/fuzzel/'
+        '.config/kitty/'
         '.config/nvim/init.vim'
         '.config/nvim/coc-settings.json'
         '.config/autostart-i3ipc.yml'
-        '.config/sway'
+        '.config/sway/'
 )
 
 # to avoid hacky pwd/dirname stuff w/ $0 [for now?], inline the path to the repo where copies are held
@@ -28,7 +30,6 @@ HOST_DIR="${DOT_DIR}/${HOSTNAME}"
 # begin dotfile processing - ensure structure is retained, naively copy w/ rsync. rely on Git to tell us about changes.
 # TODO: reconsider, edge cases?
 for DOT in "${DOTS[@]}"; do
-        DEST="${HOST_DIR}/$DOT"
-        echo "Copying '$HOME/$DOT' to '$DEST'"
-        rsync -aqv "$HOME/$DOT" "$DEST" || echo "Couldn't copy '$DOT', got rc: $?"
+        echo "Copying '$HOME/$DOT' to '$HOST_DIR/${DOT}'"
+        rsync -aqv "$HOME/$DOT" "$HOST_DIR/${DOT}" || echo "Couldn't copy '$DOT', got rc: $?"
 done
