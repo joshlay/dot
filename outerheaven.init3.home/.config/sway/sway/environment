@@ -41,8 +41,9 @@ W_ELECTRON_FEATURES="VaapiVideoDecoder,VaapiVideoEncoder,WebRTCPipeWireCapturer,
 #W_ELECTRON_ARGS="--silent --enable-gpu --use-gl=egl --enable-features='${W_ELECTRON_FEATURES}' --ozone-platform-hint=auto"
 W_ELECTRON_ARGS="--silent --enable-gpu-rasterization --enable-sync --disable-features='AudioServiceSandbox,Vulkan' --enable-features='${W_ELECTRON_FEATURES}' --ozone-platform-hint=auto"
 
-# maximum 'eFfIciEncY', avoid a ton of syscalls - set TZ to use localtime for glibc benefit, ref:
+# avoid a ton of syscalls - set TZ to use localtime for glibc benefit, ref:
 #   https://blog.packagecloud.io/set-environment-variable-save-thousands-of-system-calls/
-# flatpak things get weird with this, commenting out
 #TZ=:/etc/localtime
-# untested theory, may improve: TZ=:../usr/share/zoneinfo/America/Chicago
+# flatpak things get weird with this, commenting out
+# untested theory, may improve things - similar to how 'resolv.conf' links should be relative, not absolute:
+#   TZ=:../usr/share/zoneinfo/America/Chicago
