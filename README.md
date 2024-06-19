@@ -32,7 +32,7 @@ Example with in-line comments:
 ```yaml
 ---
 autostarts:
-  pre:        # *always* run, before/blocking others. ie: backup
+  pre: []     # *always* run, before/blocking others. ie: backup
   weekend: [] # blocking Sat/Sun. after 'pre'/before 'common'. ie: backup tier 2
   common: []  # things started every day, after 'pre' - non-blocking
   work: []    # does not execute on weekends; only if within working day/hours
