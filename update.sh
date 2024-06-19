@@ -15,23 +15,19 @@ DOTS=(
         '.config/sway'
 )
 
+# to avoid hacky pwd/dirname stuff w/ $0 [for now?], inline the path to the repo where copies are held
+DOT_DIR="${HOME}/git/dot"
+
 # ensure the host running this script/updating dotfiles has a directory
 # ... then temporarily change into it for working, or exit. 
 # if it couldn't be made/entered [for whatever reason], we won't be able to copy.
 [ -d "$HOSTNAME" ] || mkdir -v "$HOSTNAME"
-pushd "$HOSTNAME" || exit
-
-echo "Changed working dir to $PWD"
 
 # now that the host/working dir is managed, process the dotfiles
-# ensure their directory structure is retained, then recursively copy
+# ensure their directory structure is retained, naively copy w/ rsync - relying on Git to tell us about changes
+# TODO: reconsider, edge cases?
 for DOT in "${DOTS[@]}"; do
-        DOT_DIR="$(dirname "$DOT")"
-        [ -d "$DOT_DIR" ] || mkdir -vp "$DOT_DIR"
-        # naively 'copy' with rsync; rely on git to tell us about changes. TODO: reconsider
-        echo "Copying '$HOME/$DOT' to '$DOT'"
-        rsync -aqv "$HOME/$DOT" "$DOT" || echo "Couldn't copy '$DOT', got rc: $?"
+        DEST="${DOT_DIR}/${HOSTNAME}/$DOT"
+        echo "Copying '$HOME/$DOT' to '$DEST'"
+        rsync -aqv "$HOME/$DOT" "$DEST" || echo "Couldn't copy '$DOT', got rc: $?"
 done
-
-# return where we were
-popd || exit
