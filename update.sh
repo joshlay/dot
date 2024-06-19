@@ -8,7 +8,10 @@ set -u
 
 # array of files/dirs [relative to home] to include
 DOTS=(
+        '.bashrc'
+        # '.shell_aliases'  # needs cleaned up first
         '.vimrc'
+        '.config/fuzzel'
         '.config/nvim/init.vim'
         '.config/nvim/coc-settings.json'
         '.config/autostart-i3ipc.yml'
