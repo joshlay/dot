@@ -1,0 +1,34 @@
+---
+autostarts:
+  pre:  # blocking tasks before others; ie: backup
+    - "truncate -s 0 --no-create ~/.gnupg/trezor/gpg-agent.log"  # this grows ridiculously large/fast, clear it on login - before backup
+    - "kitty ~/.local/bin/backup_restic --single-instance --instance-group autostart"
+  weekend: [] # blocking tasks to run on weekends, after 'pre' but before the rest in 'common'. 'work' is excluded from weekends.
+#    - "/usr/bin/flatpak update --user --noninteractive --assumeyes | systemd-cat -t flatpak-update"
+  common:
+    - "/usr/bin/mako"
+    - "/usr/libexec/xfce-polkit"  # minimal polkit (gnome is busted), LXQt has an alright option too
+    - "kitty --session ~/.config/kitty/sessions/monitoring.conf --title stats"
+    - "wl-paste -t text --watch clipman store --no-persist"
+    - "firefox-wayland"  # flatpak/IPA don't seem to work nicely together RE: trust/self-signed
+    - "flatpak run --user com.valvesoftware.Steam -silent -nofriendsui -voice_quality 3 -tcp"
+    - "gtk4-launch discord.desktop"
+    - "blueman-applet"
+    # - "gtk4-launch quasselclient.desktop"
+    - "env XDG_CURRENT_DESKTOP=Unity kdeconnect-indicator"
+    - "nm-applet"
+    # - "env ELECTRON_NO_UPDATER=1 gtk4-launch bitwarden.desktop"  # disable the updater when running automatically
+    - "env XDG_CURRENT_DESKTOP=Unity tuned-switcher"
+    - "thunderbird-wayland -P jlay"
+    - "flatpak run --file-forwarding org.signal.Signal --class='Signal' --app-id='Signal'"
+    # - "flatpak run org.kde.kweather"
+    # - "flatpak run com.belmoussaoui.Authenticator"
+    # - "bash -c 'ulimit -n 1048576; strawberry --quiet'"
+    # - "rhythmbox"
+  work:
+    - "kitty --session ~/.config/kitty/sessions/triplesplit.conf"  # main term, single instance w/ three panes. one with (tabbed) vim for weekly notes
+    - "swayidle"  # attempt to be modestly compliant; lock screen when away
+    # - "gtk4-launch slack.desktop"
+    # - "/opt/Webex/bin/CiscoCollabHost"  # I broke the layout on wayland, use browser instead - can share
+    # - "firefox-wayland --new-instance --no-remote --name='work-firefox' --class='work-firefox' -P workIBM"  # RIP 4/30/2024; no mas w/ IBM
+    # - "systemctl --user start macbookTunnel.service"  # "
