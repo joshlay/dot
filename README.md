@@ -1,5 +1,5 @@
 # dot
 
-Yet another dotfiles repo! Assumes a relatively recent Linux desktop; _I use Fedora btw_.
+Yet another dotfiles repo! Files are organized by hostname, maintained by `update.sh`.
 
-Feel free to borrow these or send PRs :)
+_Most_ will assume a relatively recent Linux desktop; _I use Fedora btw :)_ PRs are always welcome.
