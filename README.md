@@ -25,10 +25,10 @@ Should run on-login -- `i3`/`sway` having a config entry:
 exec 'python3 ~/.config/sway/scripts/startup.py'
 ```
 
-_Note:_ Avoid `exec_always`; this will repeat your _'wanted'_
+Avoid `exec_always`; this will repeat your _'wanted'_
 entries when reloading the _window manager_ config.
 
-Example `autostart-i3ipc.yml` with in-line comments:
+Example `autostart-i3ipc.yml`:
 
 ```yaml
 ---
@@ -56,9 +56,10 @@ _Config:_ `~/.restic_excludes`
 This will back up `$HOME` _(minus exclusions, of course!)_. Part of
 [the autostarts](#i3sway-autostarts).
 
-The meaningful work is given away -- coordinating _[on-login]_:
+The important parts are managed by others:
 
-* `restic`: performs the backup
+* `restic`: performs the backup to `$BACKUP_DEST` or `/raid1-evos/backups/restic`
+_(if unset)_
 * `pass`: stores the passphrase given to `restic`; confirmation on hardware token
 
 The exclusions are highly personalized, and as such, _not_ included.
