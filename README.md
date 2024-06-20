@@ -9,7 +9,7 @@ _I use Fedora btw :)_
 
 ### i3/Sway auto-start script
 
-_Script:_ [.config/sway/scripts/startup.py](./outerheaven.init3.home/.config/sway/scripts/startup.py)  
+_Script:_ [~/.config/sway/scripts/startup.py](./outerheaven.init3.home/.config/sway/scripts/startup.py)  
 _Config:_ [~/.config/autostart-i3ipc.yml](./outerheaven.init3.home/.config/autostart-i3ipc.yml)
 
 Time/date aware _(conditional)_ autostart manager for Sway/i3 window managers.
