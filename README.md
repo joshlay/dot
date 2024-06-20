@@ -54,11 +54,12 @@ _I use Fedora btw :)_
   <summary><i>Click to expand...</i></summary>
 
   Intended as part of the auto-starts above, I have [written a script](./outerheaven.init3.home/.local/bin/backup_home)
-  to back up `$HOME` _(minus exclusions, of course)!_
+  to back up `$HOME`  
+  _(minus exclusions, of course)!_
 
   The meaningful work is given away to other utilities:
 
 * `restic`: performs the backup
-* `pass`: stores the passphrase given to `restic`
+* `pass`: stores the passphrase given to `restic`; prompts for confirmation on hardware token
 
 </details>
