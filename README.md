@@ -58,7 +58,7 @@ _I use Fedora btw :)_
 
   The meaningful work is given away to other utilities:
 
-    * `restic`: performs the backup
-    * `pass`: stores the passphrase given to `restic`
+* `restic`: performs the backup
+* `pass`: stores the passphrase given to `restic`
 
 </details>
