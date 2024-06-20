@@ -14,7 +14,7 @@ _Config:_ [~/.config/autostart-i3ipc.yml](./outerheaven.init3.home/.config/autos
 
 Time/date aware _(conditional)_ autostart manager for Sway/i3 window managers.
 
-Should run on-login:
+Should run on-login -- `i3`/`sway` having a config entry:
 
 ```bash
 ~ $ cat ~/.config/sway/config
@@ -22,12 +22,13 @@ Should run on-login:
 #
 # See `man 5 sway` for a complete reference.
 # [...]
-# run script which handles conditional/timely autostarts. uses dict w/ this structure:
-# {'autostarts': { 'pre': [], 'weekend': [], 'common': [], 'work': []}}
 exec 'python3 ~/.config/sway/scripts/startup.py'
 ```
 
-Config example with in-line comments:
+_Note:_ Avoid `exec_always`; this will repeat your _'wanted'_
+entries when reloading the _window manager_ config.
+
+Example `autostart-i3ipc.yml` with in-line comments:
 
 ```yaml
 ---
