@@ -11,6 +11,7 @@ _I use Fedora btw :)_
 
 <details>
   <summary><i>Click to expand...</i></summary>
+  
   Time/date aware autostart manager. The script: [.config/sway/scripts/startup.py](./outerheaven.init3.home/.config/sway/scripts/startup.py)
   
   This is run by Sway on-login:
@@ -51,6 +52,7 @@ _I use Fedora btw :)_
 
 <details>
   <summary><i>Click to expand...</i></summary>
+
   Intended as part of the auto-starts above, I have [written a script](./outerheaven.init3.home/.local/bin/backup_home)
   to back up `$HOME` _(minus exclusions, of course)!_
 
