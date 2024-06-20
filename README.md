@@ -7,7 +7,7 @@ _I use Fedora btw :)_
 
 ## Notable entries
 
-### i3/Sway auto-starts
+### i3/Sway autostarts
 
 _Script:_ [~/.config/sway/scripts/startup.py](./outerheaven.init3.home/.config/sway/scripts/startup.py)  
 _Config:_ [~/.config/autostart-i3ipc.yml](./outerheaven.init3.home/.config/autostart-i3ipc.yml)
@@ -52,7 +52,7 @@ _Script:_ [~/.local/bin/backup_home](./outerheaven.init3.home/.local/bin/backup_
 _Config:_ `~/.restic_excludes`
 
 This will back up `$HOME` _(minus exclusions, of course!)_. Part of
-[the auto-starts](#i3sway-auto-starts).
+[the autostarts](#i3sway-autostarts).
 
 The meaningful work is given away -- coordinating _[on-login]_:
 
