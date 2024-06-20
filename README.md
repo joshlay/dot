@@ -7,7 +7,7 @@ _I use Fedora btw :)_
 
 ## Notable entries
 
-### i3/Sway auto-start script
+### i3/Sway auto-starts
 
 _Script:_ [~/.config/sway/scripts/startup.py](./outerheaven.init3.home/.config/sway/scripts/startup.py)  
 _Config:_ [~/.config/autostart-i3ipc.yml](./outerheaven.init3.home/.config/autostart-i3ipc.yml)
@@ -43,13 +43,13 @@ Touch `~/.vacation` to skip `work` autostarts; `rm` when work may continue :)
 Working days are assumed Monday through Friday. Hours are between 8 AM and 4 PM.
 Defined in the `WorkTime` class.
 
-### homedir backup script
+### homedir backup
 
 _Script:_ [~/.local/bin/backup_home](./outerheaven.init3.home/.local/bin/backup_home)  
 _Config:_ `~/.restic_excludes`
 
 This will back up `$HOME` _(minus exclusions, of course!)_. Part of
-[the auto-starts](#i3sway-auto-start-script).
+[the auto-starts](#i3sway-auto-starts).
 
 The meaningful work is given away -- coordinating _[on-login]_:
 
