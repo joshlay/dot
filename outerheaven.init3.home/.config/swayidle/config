@@ -1,0 +1,4 @@
+timeout 1800 '${HOME}/.config/sway/scripts/locker.py'
+timeout 1805 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on; exec ${HOME}/.config/sway/scripts/fix_primary_monitor.py"'
+before-sleep 'playerctl pause'
+before-sleep 'swaylock'
