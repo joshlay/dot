@@ -9,9 +9,12 @@ _I use Fedora btw :)_
 
 ### i3/Sway auto-start script
 
-Time/date aware autostart manager. The script: [.config/sway/scripts/startup.py](./outerheaven.init3.home/.config/sway/scripts/startup.py)
+_Script:_ [.config/sway/scripts/startup.py](./outerheaven.init3.home/.config/sway/scripts/startup.py)
+_Config:_ [~/.config/autostart-i3ipc.yml](./outerheaven.init3.home/.config/autostart-i3ipc.yml)
 
-This is run by Sway on-login:
+Time/date aware _(conditional)_ autostart manager for Sway/i3 window managers.
+
+Should run on-login:
 
 ```bash
 ~ $ cat ~/.config/sway/config
@@ -24,10 +27,7 @@ This is run by Sway on-login:
 exec 'python3 ~/.config/sway/scripts/startup.py'
 ```
 
-This reads [autostart-i3ipc.yml](./outerheaven.init3.home/.config/autostart-i3ipc.yml)
-_(in `~/.config`)_ to know what programs to `exec`.
-
-Example with in-line comments:
+Config example with in-line comments:
 
 ```yaml
 ---
@@ -45,7 +45,8 @@ These parameters may be changed in the `WorkTime` class.
 
 ### homedir backup script
 
-File: [~/.local/bin/backup_home](./outerheaven.init3.home/.local/bin/backup_home)
+_Script:_ [~/.local/bin/backup_home](./outerheaven.init3.home/.local/bin/backup_home)
+_Config:_ `~/.restic_excludes`
 
 This will back up `$HOME`_(minus exclusions, of course)_; part of [the auto-starts]
 (#i3sway-auto-start-script)
@@ -54,3 +55,5 @@ The meaningful work is given away, coordinating _[on-login]_:
 
 * `restic`: performs the backup
 * `pass`: stores the passphrase given to `restic`; confirmation on hardware token
+
+The exclusions file is highly personalized, and as such, _not_ included. Should be _shell patterns_ split by lines.
