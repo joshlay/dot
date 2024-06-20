@@ -41,14 +41,14 @@ work: []    # does not execute on weekends; only if within working day/hours
 Touch `~/.vacation` to skip `work` autostarts; `rm` when work may continue :)
 
 Working days are assumed Monday through Friday. Hours are between 8 AM and 4 PM.
-These parameters may be changed in the `WorkTime` class.
+Defined in the `WorkTime` class.
 
 ### homedir backup script
 
 _Script:_ [~/.local/bin/backup_home](./outerheaven.init3.home/.local/bin/backup_home)  
 _Config:_ `~/.restic_excludes`
 
-This will back up `$HOME`_(minus exclusions, of course!)_. Part of
+This will back up `$HOME` _(minus exclusions, of course!)_. Part of
 [the auto-starts](#i3sway-auto-start-script).
 
 The meaningful work is given away -- coordinating _[on-login]_:
@@ -56,4 +56,5 @@ The meaningful work is given away -- coordinating _[on-login]_:
 * `restic`: performs the backup
 * `pass`: stores the passphrase given to `restic`; confirmation on hardware token
 
-The exclusions are highly personalized, and as such, _not_ included. Wants _shell patterns_ split by lines.
+The exclusions are highly personalized, and as such, _not_ included.
+Wants _shell patterns_ split by lines.
