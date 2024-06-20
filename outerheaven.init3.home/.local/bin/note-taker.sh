@@ -7,8 +7,9 @@
 #   layout tall
 #   launch --location=hsplit --cwd=current bash
 #   launch --location=hsplit --cwd=current bash
-#   launch --location=hsplit --cwd=current bash .config/kitty/scripts/note-taker.sh
-# the last command is *this script*
+#   launch --location=hsplit --cwd=current note-taker.sh
+#
+# the last command is *this script* in ~/.local/bin, presumably in $PATH already
 #
 SCRIPT_NAME=$(basename "$0")
 
