@@ -3,10 +3,13 @@
 # minimal dotfile manager
 # tracks files / copies them into the repo, sorted by hostname
 #
+# known limitations/problems:
+#   - new top level directories (ie: '.config', '.local') may need to be created/seeded for new hosts
+#   - failure to put slashes after directories may lead to them being nested on re-runs
+#
 set -u
 
 # array of files/dirs [relative to home] to include
-# NOTE: use a trailing slash to avoid directory nesting
 DOTS=(
         '.bashrc'
         # '.shell_aliases'  # needs cleaned up first
