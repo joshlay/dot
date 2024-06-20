@@ -9,7 +9,7 @@ _I use Fedora btw :)_
 
 ### i3/Sway auto-start script
 
-_Script:_ [.config/sway/scripts/startup.py](./outerheaven.init3.home/.config/sway/scripts/startup.py)
+_Script:_ [.config/sway/scripts/startup.py](./outerheaven.init3.home/.config/sway/scripts/startup.py)  
 _Config:_ [~/.config/autostart-i3ipc.yml](./outerheaven.init3.home/.config/autostart-i3ipc.yml)
 
 Time/date aware _(conditional)_ autostart manager for Sway/i3 window managers.
@@ -45,7 +45,7 @@ These parameters may be changed in the `WorkTime` class.
 
 ### homedir backup script
 
-_Script:_ [~/.local/bin/backup_home](./outerheaven.init3.home/.local/bin/backup_home)
+_Script:_ [~/.local/bin/backup_home](./outerheaven.init3.home/.local/bin/backup_home)  
 _Config:_ `~/.restic_excludes`
 
 This will back up `$HOME`_(minus exclusions, of course)_; part of [the auto-starts]
