@@ -1,8 +1,10 @@
 #!/bin/bash
-# with Sway on login, a Kitty session is started which runs *this* script
-# provides a pane with an editor on notes for this week (and last)
+# scripted note organizer/taker
 #
-# my kitty session config:
+# with Sway/on login, a Kitty session is started which runs *this* script
+# provides a pane with an editor on notes for this week (and last) with tabs
+#
+# Kitty session config:
 #   # ~/config/kitty/sessions/triplesplit.conf
 #   layout tall
 #   launch --location=hsplit --cwd=current bash
@@ -31,8 +33,7 @@ LAST_WEEK_NAME=$(date -d '7 days ago' +%Y-week%V)
 # Construct the two note files to open in tabs as one array
 NOTE_PATHS=("$NOTE_DIR/$CURRENT_NOTE" "$NOTE_DIR/$LAST_WEEK_NAME")
 
-# Use EDITOR variable or fallback to vim as default.
-# If EDITOR contains "vim" (like nvim, vim, etc.), add tab arguments.
+# Use EDITOR variable or fallback to vim as default. If contains "vim" (like {g,n,}vim and so on), add tab arguments.
 EDITOR="${EDITOR:-vim}"
 if [[ $EDITOR == *vim* ]]; then
     # Run the vim-like editor with tabs
