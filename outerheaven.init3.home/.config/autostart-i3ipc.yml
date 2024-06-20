@@ -2,7 +2,7 @@
 autostarts:
   pre:  # blocking tasks before others; ie: backup
     - "truncate -s 0 --no-create ~/.gnupg/trezor/gpg-agent.log"  # this grows ridiculously large/fast, clear it on login - before backup
-    - "kitty ~/.local/bin/backup_restic --single-instance --instance-group autostart"
+    - "foot backup_home"  # custom 'restic' and 'pass'-drive backup script in ~/.local/bin
   weekend: [] # blocking tasks to run on weekends, after 'pre' but before the rest in 'common'. 'work' is excluded from weekends.
 #    - "/usr/bin/flatpak update --user --noninteractive --assumeyes | systemd-cat -t flatpak-update"
   common:
@@ -21,6 +21,7 @@ autostarts:
     - "env XDG_CURRENT_DESKTOP=Unity tuned-switcher"
     - "thunderbird -P jlay"  # 'thunderbird-wayland' has finally joined/flattened - also, I set the env var; MOZ_ENABLE_WAYLAND=1
     - "flatpak run --file-forwarding org.signal.Signal --class='Signal' --app-id='Signal'"
+    - "virt-manager"
     # - "flatpak run org.kde.kweather"
     # - "flatpak run com.belmoussaoui.Authenticator"
     # - "bash -c 'ulimit -n 1048576; strawberry --quiet'"

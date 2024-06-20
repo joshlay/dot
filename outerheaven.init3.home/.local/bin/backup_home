@@ -1,0 +1,98 @@
+#!/bin/bash
+#
+# backs up home using restic and encryption
+# passphrases protected by GPG/Trezor hardware wallet
+
+function do_backup() {
+        RUN_TIME="$(date +'%H:%M on %Y-%m-%d')"
+        echo "Starting on-login backup at ${RUN_TIME}"
+        echo ""
+        restic -r "${BACKUP_DEST}" backup \
+                --compression "${COMPRESSION}" \
+                --exclude-file="${EXCLUDES_FILE}" \
+                --one-file-system \
+                "${BACKUP_SOURCE}"
+        return $?
+}
+
+function read_enter() {
+        # used in cases where we require input before continuing/exiting
+        # ... but don't care what the input is
+        echo "Please press Enter to exit..."
+        read -r
+}
+
+set -x -o nounset -o pipefail
+# start vars, what to backup/exclude and where to log
+EXCLUDES_FILE="${HOME}/.restic_excludes"
+BACKUP_SOURCE="${HOME}"
+
+# misc options; compression / exit delay / retention period
+COMPRESSION="${COMPRESSION:-auto}"  # default auto, one of [auto, off, max]
+EXIT_DELAY="${EXIT_DELAY:-3}"
+KEEP="${KEEP:-7d}"
+
+# define where to write backups - one at a time
+# double slashes for remote volumes are significant to separate host from path
+BACKUP_DEST="${BACKUP_DEST:-/raid1-evos/backups/restic}"
+PASS_NAME="${PASS_NAME:-restic/raid1-evos}"
+# PASS_NAME provides the path to the 'pass' object with the repo password
+# ie: 'pass restic/t7usb' would show the password; provided/backed by Trezor wallet through GPG
+# alts:
+# BACKUP_DEST="/mnt/t7usb/restic"
+# PASS_NAME="restic/t7usb"
+# BACKUP_DEST="sftp://zeta.jlay.dev//backup/restic"  # uses SATA zvol
+# PASS_NAME="restic/zeta"
+
+# set restic specific vars; performance but also auth
+export RESTIC_READ_CONCURRENCY=8  # default 2
+export RESTIC_PACK_SIZE=32  # default 16 MiB
+export RESTIC_PROGRESS_FPS=1
+# export RESTIC_PASSWORD_FILE="/rust/backups/workstation/.restic_password_to_zeta_podvol"
+# redundant copy at /raid1-evos/backups/.workstation_restic_password_to_zeta_podvol
+set +x
+
+# ensure Trezor GPG agent is available/used for 'pass'
+export GNUPGHOME="${HOME}/.gnupg/trezor"
+
+echo "Getting repository password with 'pass'/GPG; check hardware wallet for verification"
+RESTIC_PASSWORD=$(pass "${PASS_NAME}")
+export RESTIC_PASSWORD
+# declare and assign separately to avoid masking rc
+# https://www.shellcheck.net/wiki/SC2155
+
+# Check repository availability/consistency
+restic check -r "$BACKUP_DEST" --no-lock --quiet
+RESTIC_RC_CHECK=$?
+
+if (( RESTIC_RC_CHECK == 0 )); then
+        # happy path - check of the destination passed, continue w/ backup
+        echo -e "\nRestic repository is available and passed checks, proceeding"
+        echo -e "\nCleaning up caches"
+        restic cache --cleanup
+        echo -e "\nCleaning backups older than $KEEP"
+        restic -r "$BACKUP_DEST" forget --prune --keep-within "$KEEP" --quiet
+        if do_backup; then
+                echo -e "\nBackup succeeded!"
+        else
+                echo -e "\nBackup failed!"
+                # require input before continuing/exiting
+                read_enter
+        fi
+else
+        # empty line to separate our summary from the noise
+        echo ""
+        # unhappy path - check of the destination restic repo failed, and we didn't backup
+        if (( RESTIC_RC_CHECK == 3 )); then
+                echo "The repo doesn't seem to exist - cannot backup. Is '$BACKUP_DEST' mounted/available?"
+        else
+                echo "An unknown error occurred in checking '$BACKUP_DEST'."
+                echo "Review output, no assurances on consistency with any backups. Storage medium failures possible."
+        fi
+        # require input before continuing/exiting
+        read_enter
+fi
+echo "Exiting in $EXIT_DELAY seconds"
+sleep "${EXIT_DELAY}"
+
+unset RESTIC_PASSWORD

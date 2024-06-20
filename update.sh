@@ -20,6 +20,9 @@ DOTS=(
         '.config/nvim/coc-settings.json'
         '.config/autostart-i3ipc.yml'
         '.config/sway/'
+        '.config/swayidle/config'
+        '.config/swaylock/config'
+        '.local/bin/backup_home'
         '.local/bin/note-taker.sh'  # run by Kitty in a 'triplesplit' session, one of many of autostart 'wants' in '...-i3ipc.yml' above
 )
 
