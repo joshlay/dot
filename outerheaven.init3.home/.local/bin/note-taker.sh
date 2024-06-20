@@ -1,11 +1,12 @@
 #!/bin/bash
 # scripted note organizer/taker
 #
-# with Sway/on login, a Kitty session is started which runs *this* script
-# provides a pane with an editor on notes for this week (and last) with tabs
+# with Sway/on login:
+#   a Kitty session is started which runs *this* script through a 'session file' in a pane
+#   ultimately, providing an editor with timely notes for this week (and last) in tabs
 #
 # Kitty session config:
-#   # ~/config/kitty/sessions/triplesplit.conf
+#   # ~/.config/kitty/sessions/triplesplit.conf
 #   layout tall
 #   launch --location=hsplit --cwd=current bash
 #   launch --location=hsplit --cwd=current bash
