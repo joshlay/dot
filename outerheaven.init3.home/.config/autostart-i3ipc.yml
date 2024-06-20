@@ -19,7 +19,7 @@ autostarts:
     - "nm-applet"
     # - "env ELECTRON_NO_UPDATER=1 gtk4-launch bitwarden.desktop"  # disable the updater when running automatically
     - "env XDG_CURRENT_DESKTOP=Unity tuned-switcher"
-    - "thunderbird-wayland -P jlay"
+    - "thunderbird -P jlay"  # 'thunderbird-wayland' has finally joined/flattened - also, I set the env var; MOZ_ENABLE_WAYLAND=1
     - "flatpak run --file-forwarding org.signal.Signal --class='Signal' --app-id='Signal'"
     # - "flatpak run org.kde.kweather"
     # - "flatpak run com.belmoussaoui.Authenticator"
