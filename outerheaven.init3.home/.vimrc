@@ -1,10 +1,10 @@
 " NOTE: don't add more LSPs here, use 'coc.nvim' - it offers better completion
 " 'vim'/common elements are held here while 'nvim' has another config: '.config/nvim/init.vim'
 call plug#begin('~/.vim/exts')
-Plug 'AlexvZyl/nordic.nvim', { 'branch': 'main' }
+" Plug 'AlexvZyl/nordic.nvim', { 'branch': 'main' }  " replaced w/ ayu
+Plug 'ayu-theme/ayu-vim'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'fladson/vim-kitty'
-Plug 'ayu-theme/ayu-vim' " or other package manager
 " replaced 'ansible-vim' that *was* here w/ dist pkg, used by 'coc-ansible'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'yaegassy/coc-ansible', {'do': 'yarn install --frozen-lockfile'}
@@ -17,12 +17,9 @@ autocmd FileType yaml setlocal et ts=2 ai sw=2 nu sts=0
 set updatetime=750
 filetype plugin on
 syntax on
-" colorscheme nord
-" colorscheme nordic
-" colorscheme slate
-" let ayucolor="light"  " for light version of theme
-" let ayucolor="mirage" " for mirage version of theme
-let ayucolor="dark"   " for dark version of theme
+" let ayucolor="light"
+" let ayucolor="mirage"
+let ayucolor="dark"
 colorscheme ayu
 match Error /\%xA0/
 
