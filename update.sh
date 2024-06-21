@@ -24,6 +24,7 @@ DOTS=(
         '.config/swaylock/config'
         '.local/bin/backup_home'
         '.local/bin/note-taker.sh'  # run by Kitty in a 'triplesplit' session, one of many of autostart 'wants' in '...-i3ipc.yml' above
+        '.vim/autoload/'  # vim-plug, mainly
 )
 
 # to avoid hacky pwd/dirname stuff w/ $0 [for now?], inline the path to the repo where copies are held
