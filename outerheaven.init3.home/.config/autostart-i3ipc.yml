@@ -1,10 +1,11 @@
 ---
+# yamllint disable rule:line-length
 autostarts:
   pre:  # blocking tasks before others; ie: backup
     - "truncate -s 0 --no-create ~/.gnupg/trezor/gpg-agent.log"  # this grows ridiculously large/fast, clear it on login - before backup
     - "foot backup_home"  # custom 'restic'/'pass'-driven backup script in '~/.local/bin'
-  weekend: [] # blocking tasks to run on weekends, after 'pre' but before the rest in 'common'. 'work' is excluded from weekends.
-#    - "/usr/bin/flatpak update --user --noninteractive --assumeyes | systemd-cat -t flatpak-update"
+  weekend: []  # blocking tasks to run on weekends, after 'pre' but before the rest in 'common'. 'work' is excluded from weekends.
+  #    - "/usr/bin/flatpak update --user --noninteractive --assumeyes | systemd-cat -t flatpak-update"
   common:
     - "/usr/bin/mako"
     - "/usr/libexec/xfce-polkit"  # minimal polkit (gnome is busted), LXQt has an alright option too
