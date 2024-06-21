@@ -25,8 +25,8 @@ Should run on-login -- `i3`/`sway` having a config entry:
 exec 'python3 ~/.config/sway/scripts/startup.py'
 ```
 
-Avoid `exec_always`; this will repeat your _'wanted'_
-entries when reloading the _window manager_ config.
+Use `exec` as shown; avoid `exec_always`. Your _'wanted'_
+entries will repeat, otherwise, if reloading i3/Sway.
 
 Example `autostart-i3ipc.yml`:
 
