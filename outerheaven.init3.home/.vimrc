@@ -2,11 +2,12 @@
 " 'vim'/common elements are held here while 'nvim' has another config: '.config/nvim/init.vim'
 call plug#begin('~/.vim/exts')
 Plug 'AlexvZyl/nordic.nvim', { 'branch': 'main' }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'fladson/vim-kitty'
-Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' } " sets filetype needed by coc-ansible
 Plug 'ayu-theme/ayu-vim' " or other package manager
+" replaced 'ansible-vim' that *was* here w/ dist pkg, used by 'coc-ansible'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'yaegassy/coc-ansible', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 
 " misc. preferences
