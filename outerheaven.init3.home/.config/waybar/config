@@ -1,0 +1,40 @@
+// unused modules of note:
+//   custom/arrayhealth
+//   custom/advancedcpu
+//   custom/gpustats
+//   custom/weather
+//   memory
+//   cpu
+//   cava
+
+[{
+    "position": "bottom",
+    "layer": "top",
+    "height": 36,
+    "output": ["DP-1"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["tray", "idle_inhibitor", "clock"],
+    "include": ["~/.config/waybar/modules/settings.json"]
+},
+{
+    "position": "bottom",
+    "layer": "top",
+    "height": 34,
+    "output": ["DP-2"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["tray", "idle_inhibitor", "clock"],
+    "include": ["~/.config/waybar/modules/settings.json"]
+},
+{
+    "position": "bottom",
+    "layer": "top",
+    "height": 36,
+    "output": ["DP-3"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["tray", "idle_inhibitor", "clock"],
+    "include": ["~/.config/waybar/modules/settings.json"]
+}
+]

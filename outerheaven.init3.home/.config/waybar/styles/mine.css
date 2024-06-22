@@ -1,0 +1,159 @@
+/* =============================================================================
+ *
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ * =========================================================================== */
+
+/* Reset all styles */
+* {
+/*    color: #eceff4;*/
+	border: 0;
+	border-radius: 0;
+	font-family: "SF Pro Text", "Font Awesome 5 Free Solid";
+	/*font-family: "Source Sans 3 Semibold", "Font Awesome 5 Free Solid";*/
+	font-size: 16px;
+	margin: 1px;
+	padding: 0 2px;
+}
+
+/* the @<something> references will follow the GTK them
+ * more info:
+ *   waybar:    https://github.com/Alexays/Waybar/wiki/Styling#making-waybar-follow-the-gtk-theme
+ *   misc. GTK: https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
+ * */
+window#waybar {
+        background: alpha(@theme_base_color, 0.92);
+        border-top: 1px solid @unfocused_borders;
+        color: @theme_text_color;
+}
+
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+
+/*#clock, #battery, #cpu, #memory, #idle_inhibitor, #temperature, #custom-keyboard-layout, #backlight, #network, #pulseaudio, #mode, #tray, #window, #custom-launcher, #custom-power, #custom-pacman, #custom-network_traffic, #custom-weather, #custom-gpustats, #custom-media, #custom-arrayhealth, #custom-advancedcpu {
+	border-bottom: 2px;
+	border-style: solid;
+}*/
+
+#mode {
+	color: @warning_color;
+}
+
+#workspaces button {
+	color: #5e81ac;
+/*        color: @unfocused_borders;*/
+	padding: 0px;
+	border-bottom: 2px;
+	border-style: solid;
+}
+
+#workspaces button.focused {
+	color: #d8dee9;
+}
+
+#workspaces button.urgent {
+	color: @warning_color;
+}
+
+#clock {
+/*color: #a3be8c;*/
+/*	color: #8fbcbb;*/
+	color: #81a1c1;
+}
+
+#tray {
+	color: #88c0d0;
+}
+
+#backlight {
+	color: #ebcb8b;
+}
+#battery {
+	color: #d8dee9;
+}
+
+#battery.charging {
+	color: #81a1c1;
+}
+
+@keyframes blink {
+	to {
+		color: #4c566a;
+		background-color: #eceff4;
+	}
+}
+
+#battery.critical:not(.charging) {
+	background: #bf616a;
+	color: #eceff4;
+	animation-name: blink;
+	animation-duration: 0.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+#cpu, #custom-advancedcpu {
+	color: #a3be8c ;
+}
+
+#memory {
+	color: #d3869b;
+}
+
+#custom-gpustats {
+	color: #58a6ff;
+}
+
+#network.disabled {
+	color: #bf616a;
+}
+
+#network{
+	color: #a3be8c;
+}
+
+#network.disconnected {
+	color: #bf616a;
+}
+
+#pulseaudio {
+	color: #b48ead;
+}
+
+#pulseaudio.muted {
+	color: #3b4252;
+}
+
+#temperature {
+	color: #8fbcbb;
+}
+
+#temperature.critical {
+	color: #bf616a;
+}
+
+#idle_inhibitor.deactivated {
+/*	color: #88c0d0;*/
+	color: #81a1c1;
+}
+
+#idle_inhibitor.activated {
+/*	color: #ebcb8b;*/
+	color: #88c0d0;
+}
+
+#custom-launcher, #custom-power {
+	border-style: hidden;
+}
+
+#window {
+	border-style: hidden;
+}
+
+#custom-keyboard-layout{
+	color: #d08770;
+}
