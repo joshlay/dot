@@ -5,6 +5,12 @@ Yet another dotfiles repo! Files are organized by hostname and maintained by [up
 A _relatively_ recent Linux desktop is assumed throughout; PRs are always welcome!
 _I use Fedora btw :)_
 
+## Quick Links
+
+`.config`/system:
+
+* [workstation](./outerheaven.init3.home/.config)
+
 ## Notable entries
 
 ### i3/Sway autostarts
