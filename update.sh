@@ -15,6 +15,7 @@ DOTS=(
         # '.shell_aliases'  # needs cleaned up first
         '.vimrc'
         '.config/fuzzel/'
+        '.config/fontconfig'
         '.config/kitty/'
         '.config/nvim/init.vim'
         '.config/nvim/coc-settings.json'
