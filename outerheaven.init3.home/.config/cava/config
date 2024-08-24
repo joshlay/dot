@@ -1,0 +1,73 @@
+## Configuration file for CAVA. Default values are commented out. Use either ';' or '#' for commenting.
+
+[general]
+mode = normal
+framerate = 120
+autosens = 1
+bars = 0
+bar_width = 4
+bar_spacing = 1
+
+[input]
+sample_bits = 32
+
+[output]
+method = sdl
+channels = mono
+mono_option = average
+alacritty_sync = 1
+
+[color]
+# Colors can be one of seven predefined: black, blue, cyan, green, magenta, red, white, yellow.
+# Or defined by hex code '#xxxxxx' (hex code must be within quotes).
+; background = default
+; foreground = blue
+gradient = 1
+; gradient_count = 8
+; gradient_color_1 = '#59cc33'
+; gradient_color_2 = '#80cc33'
+; gradient_color_3 = '#a6cc33'
+; gradient_color_4 = '#cccc33'
+; gradient_color_5 = '#cca633'
+; gradient_color_6 = '#cc8033'
+; gradient_color_7 = '#cc5933'
+; gradient_color_8 = '#cc3333'
+# Dracula gradient
+; gradient_color_1 = '#8BE9FD'
+; gradient_color_2 = '#9AEDFE'
+; gradient_color_3 = '#CAA9FA'
+; gradient_color_4 = '#BD93F9'
+; gradient_color_5 = '#FF92D0'
+; gradient_color_6 = '#FF79C6'
+; gradient_color_7 = '#FF6E67'
+; gradient_color_8 = '#FF5555'
+# arc-darkest inspired, from llm
+gradient_color_1 = "#1b1f22"  # Bottom of the meter
+gradient_color_2 = "#22272c"
+gradient_color_3 = "#24292e"
+gradient_color_4 = "#2a3137"
+gradient_color_5 = "#2d333b"
+gradient_color_6 = "#353b43"
+gradient_color_7 = "#3a4048"
+gradient_color_8 = "#4f565f"  # Top of the meter
+
+[smoothing]
+integral = 50
+monstercat = 0
+# Set gravity percentage for "drop off". Higher values means bars will drop faster.
+# Accepts only non-negative values. 50 means half gravity, 200 means double. Set to 0 to disable "drop off".
+; gravity = 100
+# In bar height, bars that would have been lower that this will not be drawn.
+; ignore = 0
+
+
+[eq]
+# This one is tricky. You can have as much keys as you want.
+# Remember to uncomment more then one key! More keys = more precision.
+# Look at readme.md on github for further explanations and examples.
+; 1 = 1 # bass
+; 2 = 1
+; 3 = 1 # midtone
+; 4 = 1
+; 5 = 1 # treble
+
