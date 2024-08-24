@@ -12,8 +12,11 @@ set -u
 # array of files/dirs [relative to home] to include
 DOTS=(
         '.bashrc'
+        '.gtkrc-2.0'
+        '.gtkrc-2.0-kde4'
         # '.shell_aliases'  # needs cleaned up first
         '.vimrc'
+        '.config/cava/'
         '.config/fuzzel/'
         '.config/fontconfig'
         '.config/kitty/'
