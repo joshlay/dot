@@ -1,0 +1,18 @@
+gtk-primary-button-warps-slider=0
+gtk-button-images=0
+gtk-menu-images=0
+gtk-fallback-icon-theme="Redmond97"
+gtk-icon-theme-name="Arc-Darkest-Numix-FLAT"
+#gtk-icon-theme-name="Redmond97"
+#gtk-theme-name="Nordic-darker-standard-buttons"
+#gtk-theme-name="Orchis-Dark-Compact"
+gtk-theme-name="Arc-Darkest"
+gtk-font-name="SF Pro Text 12"
+gtk-xft-antialias=1
+gtk-xft-hinting=1
+gtk-xft-hintstyle="hintfull"
+# trying to leave this up to Sway...
+#gtk-xft-rgba="rgb"
+gtk-toolbar-style=GTK_TOOLBAR_ICONS
+gtk-enable-event-sounds=0
+gtk-enable-input-feedback-sounds=0
