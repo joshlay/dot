@@ -1,7 +1,7 @@
 # Config for sway
 #
 # See `man 5 sway` for a complete reference.
-font pango:SFProDisplay Regular 12
+font pango:SFProDisplay Regular 14
 smart_borders on
 default_border pixel 1
 default_floating_border pixel 1
