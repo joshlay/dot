@@ -47,3 +47,6 @@ W_ELECTRON_ARGS="--silent --enable-gpu-rasterization --enable-sync --disable-fea
 # flatpak things get weird with this, commenting out
 # untested theory, may improve things - similar to how 'resolv.conf' links should be relative, not absolute:
 #   TZ=:../usr/share/zoneinfo/America/Chicago
+
+# tell 'rclone' to get the config password from GPG; configured to use Trezor hardware wallet
+RCLONE_PASSWORD_COMMAND="pass rclone/config"
