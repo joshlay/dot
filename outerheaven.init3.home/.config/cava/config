@@ -12,7 +12,8 @@ bar_spacing = 1
 sample_bits = 32
 
 [output]
-method = sdl
+; method = sdl
+method = sdl_glsl
 channels = mono
 mono_option = average
 alacritty_sync = 1
