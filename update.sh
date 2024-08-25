@@ -31,8 +31,12 @@ DOTS=(
         '.vim/autoload/'  # vim-plug, mainly
         # Until I find/make custom modules worthwhile, including *only* the config/styling
         '.config/waybar/config'
+        '.config/waybar/modules/settings.json'
         '.config/waybar/styles/'
         '.config/waybar/style.css'  # symlink to the wanted stylesheet (in the 'styles' dir')
+        '.gnupg/trezor/gpg.conf'
+        '.config/systemd/user/trezor-gpg-agent.service'
+        '.config/systemd/user/trezor-gpg-agent.socket'
 )
 
 # to avoid hacky pwd/dirname stuff w/ $0 [for now?], inline the path to the repo where copies are held
