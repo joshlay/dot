@@ -34,7 +34,7 @@ DOTS=(
         '.config/waybar/modules/settings.json'
         '.config/waybar/styles/'
         '.config/waybar/style.css'  # symlink to the wanted stylesheet (in the 'styles' dir')
-        '.gnupg/trezor/gpg.conf'
+        # '.gnupg/trezor/gpg.conf'  # no longer using GPG to sign commits, instead: SSH. also... now using a known phrase for 'pass'
 )
 
 # to avoid hacky pwd/dirname stuff w/ $0 [for now?], inline the path to the repo where copies are held
